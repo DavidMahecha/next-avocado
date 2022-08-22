@@ -1,0 +1,10 @@
+{
+    "[typescriptreact][typescript]": {
+      "editor.tabSize": 2,
+      "editor.insertSpaces": true,
+      "editor.detectIndentation": false,
+      "editor.formatOnSave": true,
+    },
+    "prettier.singleQuote": true,
+    "prettier.arrowParens": "avoid",
+  }
