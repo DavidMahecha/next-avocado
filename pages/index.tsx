@@ -1,22 +1,40 @@
-import { useEffect, useState } from 'react'
+import React from 'react'
+import Link from 'next/link'
+import { GetStaticProps } from 'next'
+import fetch from 'isomorphic-unfetch'
+import Layout from '@components/Layout/Layout'
+import KawaiiHeader from '@components/KawaiiHeader/KawaiiHeader'
+import ProductList from '@components/ProductList/ProductList'
 
-const Home = () => {
-  const [productList, setProductList] = useState<TProduct[]>([])
+export const getStaticProps: GetStaticProps = async () => {
+  const response = await fetch('http://localhost:3000/api/avo')
+  const { data: productList }: TAPIAvoResponse = await response.json()
 
-  useEffect(() => {
-    fetch('/api/avo')
-      .then((response) => response.json())
-      .then(({ data, length }) => setProductList(data))
-  }, [])
+  return {
+    props: {
+      productList,
+    },
+  }
+}
 
+const HomePage = ({ productList }: { productList: TProduct[] }) => {
   return (
-    <div>
-      <h1>:v</h1>
-      {productList.map((product) => (
-        <div key={product.id}>{product.name}</div>
-      ))}
-    </div>
+    <Layout>
+      <KawaiiHeader />
+      <section>
+        <Link href="/yes-or-no">
+          <a>¿Deberia comer un avo hoy?</a>
+        </Link>
+      </section>
+      <ProductList products={productList} />
+      <style jsx>{`
+        section {
+          text-align: center;
+          margin-bottom: 2rem;
+        }
+      `}</style>
+    </Layout>
   )
 }
 
-export default Home
+export default HomePage

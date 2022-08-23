@@ -5,10 +5,15 @@ export default async function getAvo(
   request: NextApiRequest,
   response: NextApiResponse
 ) {
-  const db = new DB()
+  try {
+    const db = new DB()
 
-  const id = request.query.id
-  const avo = await db.getById(id as string)
+    const id = request.query.id
+    const avo = await db.getById(id as string)
 
-  response.status(200).json(avo)
+    response.status(200).json(avo)
+  } catch (e) {
+    console.error(e)
+    response.status(404).end()
+  }
 }

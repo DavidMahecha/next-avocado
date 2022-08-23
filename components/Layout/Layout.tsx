@@ -1,19 +1,17 @@
-import Navbar from '@components/Navbar'
+import { Container } from 'semantic-ui-react'
+import Navbar from '@components/Navbar/Navbar'
+import Footer from '@components/Footer/Footer'
 import type { PropsWithChildren } from 'react'
 
 const Layout = ({ children }: PropsWithChildren) => {
   return (
-    <div>
+    <>
       <Navbar />
-      {children}
-      <footer>This is the footer</footer>
-
-      <style jsx>{`
-        div {
-          background-color: salmon;
-        }
-      `}</style>
-    </div>
+      <Container as="main" text>
+        {children}
+      </Container>
+      <Footer />
+    </>
   )
 }
 
