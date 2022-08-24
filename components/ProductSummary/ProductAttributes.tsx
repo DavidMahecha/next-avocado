@@ -1,4 +1,3 @@
-import React from 'react'
 import { Header, Divider, Table } from 'semantic-ui-react'
 
 const ProductAttributes = ({

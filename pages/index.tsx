@@ -1,12 +1,12 @@
-import React from 'react'
 import Link from 'next/link'
 import { GetStaticProps } from 'next'
-import fetch from 'isomorphic-unfetch'
 import Layout from '@components/Layout/Layout'
 import KawaiiHeader from '@components/KawaiiHeader/KawaiiHeader'
 import ProductList from '@components/ProductList/ProductList'
 
-export const getStaticProps: GetStaticProps = async () => {
+type Props = { productList: TProduct[] }
+
+export const getStaticProps: GetStaticProps<Props> = async () => {
   const response = await fetch('http://localhost:3000/api/avo')
   const { data: productList }: TAPIAvoResponse = await response.json()
 
@@ -17,14 +17,12 @@ export const getStaticProps: GetStaticProps = async () => {
   }
 }
 
-const HomePage = ({ productList }: { productList: TProduct[] }) => {
+const HomePage = ({ productList }: Props) => {
   return (
     <Layout>
       <KawaiiHeader />
       <section>
-        <Link href="/yes-or-no">
-          <a>¿Deberia comer un avo hoy?</a>
-        </Link>
+        <Link href="/yes-or-no">¿Deberia comer un avo hoy?</Link>
       </section>
       <ProductList products={productList} />
       <style jsx>{`

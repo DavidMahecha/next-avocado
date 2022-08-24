@@ -1,4 +1,3 @@
-import React from 'react'
 import { SVGIconProps } from './svg.types'
 
 const Avocado = ({ size = '34px', ...otherProps }: SVGIconProps) => (

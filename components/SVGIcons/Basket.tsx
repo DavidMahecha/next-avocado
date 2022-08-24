@@ -1,4 +1,3 @@
-import React from 'react'
 import { SVGIconProps } from './svg.types'
 
 const Basket = ({ size = '34px' }: SVGIconProps) => (

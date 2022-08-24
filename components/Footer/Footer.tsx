@@ -1,4 +1,3 @@
-import React from 'react'
 import Link from 'next/link'
 import { Segment, Container, Grid, List, Header } from 'semantic-ui-react'
 

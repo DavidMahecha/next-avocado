@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from 'react'
-import fetch from 'isomorphic-unfetch'
 import Link from 'next/link'
-
+import { useState, useEffect } from 'react'
 import { Header, Button } from 'semantic-ui-react'
 import Layout from '@components/Layout/Layout'
+
+import type { GetServerSideProps } from 'next'
 
 type YesOrNoApiResponse = {
   data: 'yes' | 'no'
 }
+
+type Props = { initialResult: string }
 
 const fetchResult = async () => {
   const res = await fetch('http://localhost:3000/api/yes-or-no')
@@ -16,7 +18,7 @@ const fetchResult = async () => {
   return data
 }
 
-export async function getServerSideProps() {
+export const getServerSideProps: GetServerSideProps<Props> = async () => {
   const initialResult = await fetchResult()
 
   return {
@@ -26,7 +28,7 @@ export async function getServerSideProps() {
   }
 }
 
-const YesOrNo = ({ initialResult }: { initialResult: string }) => {
+const YesOrNo = ({ initialResult }: Props) => {
   const [isLoading, setIsLoading] = useState(false)
   const [result, setResult] = useState(initialResult)
   const [triggerCount, setTriggerCount] = useState(0)

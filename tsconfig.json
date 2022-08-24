@@ -7,7 +7,6 @@
       ],
       "@cors": ["cors-middleware.ts"],
       "@components/*": ["components/*"],
-      "@store/*": ["store/*"]
     },
     "target": "es6",
     "lib": [

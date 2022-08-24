@@ -1,7 +1,5 @@
-import React from 'react'
-import { Header, Transition, Confirm } from 'semantic-ui-react'
-
 import { PosMeMuero } from '@components/SVGIcons'
+import { Header } from 'semantic-ui-react'
 
 const RottenHeader = () => (
   <Header size="huge" as="h1">

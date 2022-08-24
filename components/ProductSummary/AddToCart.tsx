@@ -1,6 +1,8 @@
-import React, { useState, useContext } from 'react'
+import { useState } from 'react'
+import { useCartMutations } from 'hooks/useCart'
 import { Input, Icon, Transition } from 'semantic-ui-react'
-import { useCartMutations } from '@store/Cart'
+
+import type { ChangeEvent } from 'react'
 
 type AddToCartProps = {
   product: TProduct
@@ -54,7 +56,7 @@ const AddToCart = ({ product }: AddToCartProps) => {
     }
   }
 
-  const handleChange = ({ target }: React.ChangeEvent<HTMLInputElement>) =>
+  const handleChange = ({ target }: ChangeEvent<HTMLInputElement>) =>
     setQuantity(parseInt(target.value, 10))
 
   return (

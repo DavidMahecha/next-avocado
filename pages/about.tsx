@@ -1,4 +1,3 @@
-import React from 'react'
 import { Image, Header } from 'semantic-ui-react'
 import Layout from '@components/Layout/Layout'
 

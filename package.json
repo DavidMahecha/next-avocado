@@ -18,7 +18,6 @@
     "react-dom": "^18.2.0",
     "@types/cors": "2.x",
     "cors": "2.x",
-    "isomorphic-unfetch": "3.x",
     "semantic-ui-css": "2.x",
     "semantic-ui-react": "2.x"
   },

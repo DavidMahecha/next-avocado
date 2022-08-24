@@ -1,4 +1,3 @@
-import React from 'react'
 import { Header, Transition } from 'semantic-ui-react'
 
 import { Avocado } from '@components/SVGIcons'

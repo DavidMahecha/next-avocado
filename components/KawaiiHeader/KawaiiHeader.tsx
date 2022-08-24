@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { Confirm } from 'semantic-ui-react'
 
 import PuesVivo from './AnimatedHeader'

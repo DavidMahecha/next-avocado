@@ -1,9 +1,8 @@
-import React from 'react'
-import fetch from 'isomorphic-unfetch'
-
 import Layout from '@components/Layout/Layout'
 import ProductSummary from '@components/ProductSummary/ProductSummary'
-import { GetStaticPaths, GetStaticProps } from 'next'
+import type { GetStaticPaths, GetStaticProps } from 'next'
+
+type Props = { product: TProduct }
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const response = await fetch('http://localhost:3000/api/avo')
@@ -20,7 +19,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 }
 
 // This also gets called at build time
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
   // params contains the post `id`.
   // If the route is like /posts/1, then params.id is 1
   const response = await fetch(`http://localhost:3000/api/avo/${params?.id}`)
@@ -30,7 +29,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   return { props: { product } }
 }
 
-const ProductPage = ({ product }: { product: TProduct }) => {
+const ProductPage = ({ product }: Props) => {
   return (
     <Layout>
       {product == null ? null : <ProductSummary product={product} />}
