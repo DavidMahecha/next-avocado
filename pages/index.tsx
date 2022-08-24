@@ -1,3 +1,4 @@
+import DB from '@database'
 import Link from 'next/link'
 import { GetStaticProps } from 'next'
 import Layout from '@components/Layout/Layout'
@@ -7,12 +8,12 @@ import ProductList from '@components/ProductList/ProductList'
 type Props = { productList: TProduct[] }
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-  const response = await fetch(`${process.env.NEXT_PUBLIC_URL_API}/api/avo`)
-  const { data: productList }: TAPIAvoResponse = await response.json()
+  const db = new DB()
+  const avos = await db.getAll()
 
   return {
     props: {
-      productList,
+      productList: avos,
     },
   }
 }
