@@ -18,15 +18,15 @@ const fetchResult = async () => {
   return data
 }
 
-export const getServerSideProps: GetServerSideProps<Props> = async () => {
-  const initialResult = await fetchResult()
+// export const getServerSideProps: GetServerSideProps<Props> = async () => {
+//   const initialResult = await fetchResult()
 
-  return {
-    props: {
-      initialResult,
-    },
-  }
-}
+//   return {
+//     props: {
+//       initialResult,
+//     },
+//   }
+// }
 
 const YesOrNo = ({ initialResult }: Props) => {
   const [isLoading, setIsLoading] = useState(false)
