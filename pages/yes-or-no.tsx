@@ -12,7 +12,7 @@ type YesOrNoApiResponse = {
 type Props = { initialResult: string }
 
 const fetchResult = async () => {
-  const res = await fetch('http://localhost:3000/api/yes-or-no')
+  const res = await fetch(`${process.env.NEXT_PUBLIC_URL_API}/api/yes-or-no`)
   const { data }: YesOrNoApiResponse = await res.json()
 
   return data

@@ -7,7 +7,7 @@ import ProductList from '@components/ProductList/ProductList'
 type Props = { productList: TProduct[] }
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-  const response = await fetch('http://localhost:3000/api/avo')
+  const response = await fetch(`${process.env.NEXT_PUBLIC_URL_API}/api/avo`)
   const { data: productList }: TAPIAvoResponse = await response.json()
 
   return {
