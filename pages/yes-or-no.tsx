@@ -12,10 +12,10 @@ type YesOrNoApiResponse = {
 type Props = { initialResult: string }
 
 const fetchResult = async () => {
-  console.log('Iniciando 2')
+  console.log('Iniciando 2', `${process.env.NEXT_PUBLIC_URL_API}/api/yes-or-no`)
   const res = await fetch(`${process.env.NEXT_PUBLIC_URL_API}/api/yes-or-no`)
-  console.log('Iniciando 3', await res.json())
   const { data }: YesOrNoApiResponse = await res.json()
+  console.log('Iniciando 3', data)
 
   return data
 }
