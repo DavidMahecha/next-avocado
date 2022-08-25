@@ -12,18 +12,14 @@ type YesOrNoApiResponse = {
 type Props = { initialResult: string }
 
 const fetchResult = async () => {
-  console.log('Iniciando 2', `${process.env.NEXT_PUBLIC_URL_API}/api/yes-or-no`)
   const res = await fetch(`${process.env.NEXT_PUBLIC_URL_API}/api/yes-or-no`)
   const { data }: YesOrNoApiResponse = await res.json()
-  console.log('Iniciando 3', data)
 
   return data
 }
 
 export const getServerSideProps: GetServerSideProps<Props> = async () => {
-  console.log('Iniciando')
   const initialResult = await fetchResult()
-  console.log('Terminando', initialResult)
 
   return {
     props: {

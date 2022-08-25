@@ -1,19 +1,19 @@
 import DB from '@database'
 import Link from 'next/link'
-import { GetStaticProps } from 'next'
 import Layout from '@components/Layout/Layout'
 import KawaiiHeader from '@components/KawaiiHeader/KawaiiHeader'
 import ProductList from '@components/ProductList/ProductList'
+import type { GetStaticProps } from 'next'
 
 type Props = { productList: TProduct[] }
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
   const db = new DB()
-  const avos = await db.getAll()
+  const productList = await db.getAll()
 
   return {
     props: {
-      productList: avos,
+      productList,
     },
   }
 }
